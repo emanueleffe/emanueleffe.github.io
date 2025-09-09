@@ -22,10 +22,15 @@
             color: #777;
             margin-bottom: 20px;
         }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 800px; /* Assicura che la tabella occupi almeno 800px per scorrere */
         }
         th, td {
             padding: 10px;
@@ -80,16 +85,17 @@
 </head>
 <body>
     <h1>Classifica Fantamorto camp2</h1>
-    <p class="last-update">Ultimo aggiornamento: 09/09/2025 12:37</p>
+    <p class="last-update">Ultimo aggiornamento: 09/09/2025 12:42</p>
     
-    <div style="overflow-x:auto;">
+    <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th class="rank">#</th>
                     <th>Squadra</th>
                     <th>Proprietario</th>
-                    <th class="total-score">Punteggio</th>
+                    <th class="total-score">Punteggio Totale</th>
+                    <th>Età Media Squadra</th>
                     <th>CAPITANO</th><th>LIBERO - 1</th><th>LIBERO - 2</th><th>LIBERO - 3</th><th>LIBERO - 4</th><th>LIBERO - 5</th><th>LIBERO - 6</th><th>LIBERO - 7</th><th>OVER 75 - 1</th><th>OVER 75 - 1</th><th>OVER 75 - 2</th><th>OVER 75 - 2</th><th>OVER 75 - 3</th><th>OVER 75 - 3</th><th>OVER 85 - 1</th><th>OVER 85 - 2</th><th>UNDER 40 - 1</th><th>UNDER 40 - 2</th><th>UNDER 40 - 3</th><th>UNDER 75 - 1</th><th>UNDER 75 - 1</th><th>UNDER 75 - 2</th><th>UNDER 75 - 2</th><th>UNDER 75 - 3</th><th>UNDER 75 - 3</th>
                 </tr>
             </thead>
@@ -99,7 +105,8 @@
                     <td class="rank">1</td>
                     <td class="team-name">Take Death</td>
                     <td>Ema</td>
-                    <td class="total-score">159</td>
+                    <td class="total-score">91</td>
+                    <td>73.16</td>
             
                             <td><a href="http://www.wikidata.org/entity/Q47832" target="_blank">Umberto Bossi</a> (Età: 83)</td>
                         
@@ -113,9 +120,9 @@
                         
                             <td><a href="http://www.wikidata.org/entity/Q43203" target="_blank">Clint Eastwood</a> (Età: 95)</td>
                         
-                            <td>💀 <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (Età: 78, Punteggio: 78 pt.)</td>
+                            <td>💀 <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (Età: 78, 47 pt.)</td>
                         
-                            <td>💀 <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (Età: 81, Punteggio: 81 pt.)</td>
+                            <td>💀 <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (Età: 81, 44 pt.)</td>
                         
                             <td><a href="http://www.wikidata.org/entity/Q1825004" target="_blank">Liliana Segre</a> (Età: 94)</td>
                         
@@ -157,14 +164,13 @@
     
     <div class="necro-section">
         <h2>Necrologio</h2>
+        <ul class="necro-list">
         
-                <p>Età media dei deceduti: <b>79.50</b> anni</p>
-                <ul class="necro-list">
-            
                     <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (1947-08-12 - 2025-09-09) - <b>Età</b>: 78 - <b>Squadre</b>: Take Death</li>
                 
                     <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (1944-07-22 - 2025-09-06) - <b>Età</b>: 81 - <b>Squadre</b>: Take Death</li>
-                </ul>
+                
+        </ul>
     </div>
 </body>
 </html>
