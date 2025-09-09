@@ -4,35 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classifica Fantamorto camp2</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tabellone Fantamorto - camp2</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
+            width: 100%;
+            margin: auto;
+            background: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            box-sizing: border-box;
         }
-        h1, h2 {
+        h1 {
+            color: #333;
             text-align: center;
-            color: #555;
-        }
-        .last-update {
-            text-align: center;
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 20px;
         }
         table {
             width: 100%;
@@ -43,152 +35,125 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             text-align: left;
+            white-space: nowrap;
         }
         th {
-            background-color: #5cb85c;
+            background-color: #4CAF50;
             color: white;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        .rank {
-            text-align: center;
-            width: 50px;
-        }
-        .team-name {
+        .team-row {
             font-weight: bold;
         }
         .total-score {
-            text-align: center;
-            font-weight: bold;
+            text-align: right;
+            font-size: 1.2em;
+            color: #4CAF50;
         }
         .person-info {
-            font-size: 0.9em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-weight: normal;
         }
         .empty-slot {
             color: #aaa;
-            text-align: center;
+            font-style: italic;
         }
-        .necro-section {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #eee;
-            border-radius: 8px;
-        }
-        .necro-list {
-            list-style: none;
+        ul {
+            list-style-type: none;
             padding: 0;
         }
-        .necro-list li {
+        li {
+            background: #f9f9f9;
             margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-        .necro-list li:last-child {
-            border-bottom: none;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #d9534f;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Classifica Fantamorto camp2</h1>
-        <p class="last-update">Ultimo aggiornamento: 09/09/2025 12:09</p>
-        
+        <h1>Tabellone Fantamorto - camp2</h1>
         <table>
             <thead>
                 <tr>
-                    <th class="rank">#</th>
-                    <th>Squadra</th>
+                    <th>Nome Squadra</th>
                     <th>Proprietario</th>
-                    <th class="total-score">Punteggio</th>
-                    <th>CAPITANO</th><th>LIBERO - 1</th><th>LIBERO - 2</th><th>LIBERO - 3</th><th>LIBERO - 4</th><th>LIBERO - 5</th><th>LIBERO - 6</th><th>LIBERO - 7</th><th>OVER 75 - 1</th><th>OVER 75 - 1</th><th>OVER 75 - 2</th><th>OVER 75 - 2</th><th>OVER 75 - 3</th><th>OVER 75 - 3</th><th>OVER 85 - 1</th><th>OVER 85 - 2</th><th>UNDER 40 - 1</th><th>UNDER 40 - 2</th><th>UNDER 40 - 3</th><th>UNDER 75 - 1</th><th>UNDER 75 - 1</th><th>UNDER 75 - 2</th><th>UNDER 75 - 2</th><th>UNDER 75 - 3</th><th>UNDER 75 - 3</th>
+                    <th>Punteggio Totale</th>
+                    <th>Età Media</th>
+<th>CAPITANO</th><th>OVER 75 - 1 (M/ITA)</th><th>OVER 75 - 2 (M/STR)</th><th>OVER 75 - 3 (M)</th><th>OVER 85 - 1 (M)</th><th>OVER 75 - 1 (F/ITA)</th><th>OVER 75 - 2 (F/STR)</th><th>OVER 75 - 3 (F)</th><th>OVER 85 - 2 (F)</th><th>UNDER 75 - 1 (M/ITA)</th><th>UNDER 75 - 2 (M/STR)</th><th>UNDER 75 - 3 (M)</th><th>UNDER 75 - 1 (F/ITA)</th><th>UNDER 75 - 2 (F/STR)</th><th>UNDER 75 - 3 (F)</th><th>UNDER 40 - 1</th><th>UNDER 40 - 2</th><th>UNDER 40 - 3</th><th>LIBERO - 1</th><th>LIBERO - 2</th><th>LIBERO - 3</th><th>LIBERO - 4</th><th>LIBERO - 5</th><th>LIBERO - 6</th><th>LIBERO - 7</th>
                 </tr>
             </thead>
             <tbody>
-        
-                <tr>
-                    <td class="rank">1</td>
-                    <td class="team-name">Take Death</td>
+
+                <tr class="team-row">
+                    <td>Take Death</td>
                     <td>Ema</td>
-                    <td class="total-score">159</td>
-            
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q47832" target="_blank">Umberto Bossi</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q7747" target="_blank">Vladimir Putin</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43274" target="_blank">Carlo III del Regno Unito</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q395274" target="_blank">Michael J. Fox</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q57336" target="_blank">Ali Khamenei</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43203" target="_blank">Clint Eastwood</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (78)</td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (81)</td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q1825004" target="_blank">Liliana Segre</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q574317" target="_blank">Antonino Zichichi</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q117012" target="_blank">Yoko Ono</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q379664" target="_blank">Valentino Garavani</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43252" target="_blank">Sophia Loren</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q104266" target="_blank">Mel Brooks</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q6279" target="_blank">Joe Biden</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q131411648" target="_blank">Luigi Mangione</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q3741984" target="_blank">Fedez</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q14864448" target="_blank">Kim Ju-ae</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q285034" target="_blank">Serena Grandi</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q1386043" target="_blank">Ezio Greggio</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q5105" target="_blank">Céline Dion</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q44329" target="_blank">Bashar al-Assad</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q74746" target="_blank">Elvira Nabiullina</a></td>
-                
-                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q2680" target="_blank">Bruce Willis</a></td>
-                </tr>
+                    <td class="total-score">91</td>
+                    <td>73.16</td>
+        
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q47832" target="_blank">Umberto Bossi</a> (83 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q574317" target="_blank">Antonino Zichichi</a> (95 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q379664" target="_blank">Valentino Garavani</a> (93 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q104266" target="_blank">Mel Brooks</a> (99 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q6279" target="_blank">Joe Biden</a> (82 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q1825004" target="_blank">Liliana Segre</a> (94 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q117012" target="_blank">Yoko Ono</a> (92 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43252" target="_blank">Sophia Loren</a> (90 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a> (90 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q1386043" target="_blank">Ezio Greggio</a> (71 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q44329" target="_blank">Bashar al-Assad</a> (59 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q2680" target="_blank">Bruce Willis</a> (70 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q285034" target="_blank">Serena Grandi</a> (67 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q5105" target="_blank">Céline Dion</a> (57 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q74746" target="_blank">Elvira Nabiullina</a> (61 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q131411648" target="_blank">Luigi Mangione</a> (27 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q3741984" target="_blank">Fedez</a> (35 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q14864448" target="_blank">Kim Ju-ae</a> (12 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q7747" target="_blank">Vladimir Putin</a> (72 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43274" target="_blank">Carlo III del Regno Unito</a> (76 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q395274" target="_blank">Michael J. Fox</a> (64 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q57336" target="_blank">Ali Khamenei</a> (86 anni)</td>
+                    
+                        <td class="person-info"><a href="http://www.wikidata.org/entity/Q43203" target="_blank">Clint Eastwood</a> (95 anni)</td>
+                    
+                        <td class="person-info">✝ <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (78 anni, 47 pt.)</td>
+                    
+                        <td class="person-info">✝ <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (81 anni, 44 pt.)</td>
+                    </tr>
             </tbody>
         </table>
-        
-        <div class="necro-section">
-            <h2>Necrologio</h2>
-            <ul class="necro-list">
-        
-                    <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (1947-08-12 - 2025-09-09) - <b>Età</b>: 78 - <b>Squadre</b>: Take Death</li>
-                
-                    <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (1944-07-22 - 2025-09-06) - <b>Età</b>: 81 - <b>Squadre</b>: Take Death</li>
-                
-            </ul>
-        </div>
+    
+        <h2>Necrologio</h2>
+        <ul>
+    
+                <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q561116" target="_blank">Stefano Benni</a> (1947-08-12 - 2025-09-09) - <b>Età</b>: 78 - <b>Squadre</b>: Take Death</li>
+            
+                <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q560040" target="_blank">Rick Davies</a> (1944-07-22 - 2025-09-06) - <b>Età</b>: 81 - <b>Squadre</b>: Take Death</li>
+            
+        </ul>
     </div>
 </body>
 </html>
