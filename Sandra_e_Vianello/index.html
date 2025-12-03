@@ -1,230 +1,1617 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classifica Fantamorto Sandra_e_Vianello</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --background-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        h1, h2 {
-            color: #555;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 2rem 0;
             text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
         .last-update {
-            text-align: center;
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 20px;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
-        .table-container {
-            width: 100%;
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 30px;
             overflow-x: auto;
         }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            min-width: 800px; /* Assicura che la tabella occupi almeno 800px per scorrere */
+            min-width: 800px;
         }
+
         th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 12px 15px;
             text-align: left;
-            white-space: nowrap; /* Impedisce al testo di andare a capo */
+            border-bottom: 1px solid var(--border-color);
         }
+
         th {
-            background-color: #4CAF50;
+            background-color: var(--secondary-color);
             color: white;
-            font-weight: bold;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        tr:hover {
+            background-color: #f1f1f1;
         }
+
         .rank {
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
             width: 50px;
-            text-align: center;
         }
-        .total-score {
-            text-align: center;
-            font-weight: bold;
-        }
+
         .team-name {
-            font-weight: bold;
+            font-weight: 700;
+            color: var(--primary-color);
         }
-        .necro-section {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #eee;
-            border-radius: 8px;
+
+        .score {
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
         }
+        
+        .person-cell {
+            font-size: 0.9rem;
+        }
+
+        .dead-person {
+            background-color: #ffebee;
+            color: #c62828;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
         .necro-list {
             list-style: none;
             padding: 0;
         }
-        .necro-list li {
+
+        .necro-item {
+            background-color: white;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
             margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        .necro-list li:last-child {
-            border-bottom: none;
+
+        .necro-name {
+            font-weight: 700;
+            font-size: 1.1rem;
         }
+
+        .necro-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         a {
-            color: #007bff;
+            color: var(--primary-color);
             text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+            transition: color 0.2s;
         }
+
         a:hover {
-            text-decoration: underline;
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+        
+        .empty-cell {
+            color: #ccc;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .necro-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .necro-details {
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Tabellone generale</h1>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th class="rank">#</th>
-                    <th>Squadra</th>
-                    <th>Proprietario</th>
-                    <th class="total-score">Punti</th>
-                    <th>Età media</th>
-                    <th>CAPITANO (x2 pt)</th><th>OVER 75 - 1</th><th>OVER 75 - 2</th><th>OVER 75 - 3</th><th>OVER 85 - 1</th><th>OVER 75 - 1</th><th>OVER 75 - 2</th><th>OVER 75 - 3</th><th>OVER 85 - 2</th><th>UNDER 75 - 1</th><th>UNDER 75 - 2</th><th>UNDER 75 - 3</th><th>UNDER 75 - 1</th><th>UNDER 75 - 2</th><th>UNDER 75 - 3</th><th>UNDER 40 - 1 (x1.5 pt)</th><th>UNDER 40 - 2 (x1.5 pt)</th><th>UNDER 40 - 3 (x1.5 pt)</th><th>LIBERO - 1</th><th>LIBERO - 2</th><th>LIBERO - 3</th><th>LIBERO - 4</th><th>LIBERO - 5</th><th>LIBERO - 6</th><th>LIBERO - 7</th>
-                </tr>
-            </thead>
-            <tbody>
-        
-                <tr>
-                    <td class="rank">1</td>
-                    <td class="team-name">La morte ti fa bella</td>
-                    <td>Eli</td>
-                    <td class="total-score">34</td>
-                    <td>72.32</td>
-            
-                            <td><a href="http://www.wikidata.org/entity/Q180374" target="_blank">Frank Gehry</a><br>(Età: 96)</td>
+    <header>
+        <div class="container">
+            <h1>🏆 Classifica Fantamorto Sandra_e_Vianello</h1>
+            <div class="last-update">Aggiornato al: 03/12/2025 11:13</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Tabellone Generale</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="rank">#</th>
+                        <th>Squadra</th>
+                        <th>Proprietario</th>
+                        <th class="score">Punti</th>
+                        <th>Età Media</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q47832" target="_blank">Umberto Bossi</a><br>(Età: 84)</td>
+                            <th>CAPITANO (x2 pt)</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q22686" target="_blank">Donald Trump</a><br>(Età: 79)</td>
+                            <th>OVER 75 - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q81328" target="_blank">Harrison Ford</a><br>(Età: 83)</td>
+                            <th>OVER 75 - 2</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q39792" target="_blank">Jack Nicholson</a><br>(Età: 88)</td>
+                            <th>OVER 75 - 3</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q238547" target="_blank">Stefania Sandrelli</a><br>(Età: 79)</td>
+                            <th>OVER 85 - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q41142" target="_blank">Jane Fonda</a><br>(Età: 87)</td>
+                            <th>OVER 75 - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q229271" target="_blank">Lily Tomlin</a><br>(Età: 86)</td>
+                            <th>OVER 75 - 2</th>
                         
-                            <td>💀 <a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a><br>(Età: 91, 34 pt.)</td>
+                            <th>OVER 75 - 3</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q25100" target="_blank">Nanni Moretti</a><br>(Età: 72)</td>
+                            <th>OVER 85 - 2</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q2680" target="_blank">Bruce Willis</a><br>(Età: 70)</td>
+                            <th>UNDER 75 - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q933508" target="_blank">Carlo Conti</a><br>(Età: 64)</td>
+                            <th>UNDER 75 - 2</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q17993175" target="_blank">Elisabetta Franchi</a><br>(Età: 56)</td>
+                            <th>UNDER 75 - 3</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q10479" target="_blank">Catherine Middleton</a><br>(Età: 43)</td>
+                            <th>UNDER 75 - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q28058585" target="_blank">Chiara Valerio</a><br>(Età: 47)</td>
+                            <th>UNDER 75 - 2</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q34086" target="_blank">Justin Bieber</a><br>(Età: 31)</td>
+                            <th>UNDER 75 - 3</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q56434717" target="_blank">Greta Thunberg</a><br>(Età: 22)</td>
+                            <th>UNDER 40 - 1 (x1 pt)</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q131411648" target="_blank">Luigi Mangione</a><br>(Età: 27)</td>
+                            <th>UNDER 40 - 2 (x1 pt)</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q206112" target="_blank">Willie Nelson</a><br>(Età: 92)</td>
+                            <th>UNDER 40 - 3 (x1 pt)</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q56094" target="_blank">Francis Ford Coppola</a><br>(Età: 86)</td>
+                            <th>LIBERO - 1</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q559577" target="_blank">Fausto Bertinotti</a><br>(Età: 85)</td>
+                            <th>LIBERO - 2</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q119588" target="_blank">Umberto Smaila</a><br>(Età: 75)</td>
+                            <th>LIBERO - 3</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q190148" target="_blank">Renzo Piano</a><br>(Età: 88)</td>
+                            <th>LIBERO - 4</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q470554" target="_blank">Gino Paoli</a><br>(Età: 91)</td>
+                            <th>LIBERO - 5</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q454010" target="_blank">Amanda Lear</a><br>(Età: 86)</td>
-                        </tr>
-                <tr>
-                    <td class="rank">2</td>
-                    <td class="team-name">Take Death</td>
-                    <td>Ema</td>
-                    <td class="total-score">34</td>
-                    <td>71.62</td>
-            
-                            <td><a href="http://www.wikidata.org/entity/Q47832" target="_blank">Umberto Bossi</a><br>(Età: 84)</td>
+                            <th>LIBERO - 6</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q574317" target="_blank">Antonino Zichichi</a><br>(Età: 96)</td>
+                            <th>LIBERO - 7</th>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q379664" target="_blank">Valentino</a><br>(Età: 93)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="rank">1</td>
+                        <td class="team-name">Take Death</td>
+                        <td>Ema</td>
+                        <td class="score">34</td>
+                        <td>72.67</td>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q104266" target="_blank">Mel Brooks</a><br>(Età: 99)</td>
                         
-                            <td><a href="http://www.wikidata.org/entity/Q6279" target="_blank">Joe Biden</a><br>(Età: 83)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q47832" target="_blank">
+                                    
+                                        
+                                            Umberto Bossi
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 84
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q1825004" target="_blank">Liliana Segre</a><br>(Età: 95)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q574317" target="_blank">
+                                    
+                                        
+                                            Antonino Zichichi
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 96
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q117012" target="_blank">Yōko Ono</a><br>(Età: 92)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q379664" target="_blank">
+                                    
+                                        
+                                            Valentino
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 93
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q43252" target="_blank">Sophia Loren</a><br>(Età: 91)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q104266" target="_blank">
+                                    
+                                        
+                                            Mel Brooks
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 99
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td>💀 <a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a><br>(Età: 91, 34 pt.)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q6279" target="_blank">
+                                    
+                                        
+                                            Joe Biden
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 83
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q1386043" target="_blank">Ezio Greggio</a><br>(Età: 71)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q1825004" target="_blank">
+                                    
+                                        
+                                            Liliana Segre
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 95
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q44329" target="_blank">Bashar al-Assad</a><br>(Età: 60)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q117012" target="_blank">
+                                    
+                                        
+                                            Yōko Ono
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 92
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q2680" target="_blank">Bruce Willis</a><br>(Età: 70)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q43252" target="_blank">
+                                    
+                                        
+                                            Sophia Loren
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 91
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q285034" target="_blank">Serena Grandi</a><br>(Età: 67)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q239002" target="_blank">
+                                    
+                                        
+                                            <span class="dead-person">💀 Ornella Vanoni</span>
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 91, 34 pt.
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q5105" target="_blank">Céline Dion</a><br>(Età: 57)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q1386043" target="_blank">
+                                    
+                                        
+                                            Ezio Greggio
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 71
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q74746" target="_blank">Ėl'vira Nabiullina</a><br>(Età: 62)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q44329" target="_blank">
+                                    
+                                        
+                                            Bashar al-Assad
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 60
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q44479972" target="_blank">6ix9ine</a><br>(Età: 29)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q2680" target="_blank">
+                                    
+                                        
+                                            Bruce Willis
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 70
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q3741984" target="_blank">Fedez</a><br>(Età: 36)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q285034" target="_blank">
+                                    
+                                        
+                                            Serena Grandi
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 67
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q14864448" target="_blank">Kim Ju-ae</a><br>(Età: 12)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q5105" target="_blank">
+                                    
+                                        
+                                            Céline Dion
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 57
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q7747" target="_blank">Vladimir Putin</a><br>(Età: 73)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q74746" target="_blank">
+                                    
+                                        
+                                            Ėl'vira Nabiullina
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 62
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q43274" target="_blank">Carlo III del Regno Unito</a><br>(Età: 77)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q44479972" target="_blank">
+                                    
+                                        
+                                            6ix9ine
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 29
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q395274" target="_blank">Michael J. Fox</a><br>(Età: 64)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q3741984" target="_blank">
+                                    
+                                        
+                                            Fedez
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 36
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q57336" target="_blank">Ali Khamenei</a><br>(Età: 86)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q14864448" target="_blank">
+                                    
+                                        
+                                            Kim Ju-ae
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 12
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q43203" target="_blank">Clint Eastwood</a><br>(Età: 95)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q7747" target="_blank">
+                                    
+                                        
+                                            Vladimir Putin
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 73
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q46809" target="_blank">Raúl Castro</a><br>(Età: 94)</td>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q43274" target="_blank">
+                                    
+                                        
+                                            Carlo III del Regno Unito
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 77
+                                        
+                                    </small>
+                                </td>
+                            
                         
-                            <td><a href="http://www.wikidata.org/entity/Q13002" target="_blank">Paul Gascoigne</a><br>(Età: 58)</td>
-                        </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="necro-section">
-        <h2>Necrologio</h2>
-        <ul class="necro-list">
-        
-                    <li><b>Nome</b>: <a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a> (1934-09-22 - 2025-11-21) - <b>Età</b>: 91 - <b>Squadre</b>: La morte ti fa bella, Take Death</li>
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q395274" target="_blank">
+                                    
+                                        
+                                            Michael J. Fox
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 64
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q57336" target="_blank">
+                                    
+                                        
+                                            Ali Khamenei
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 86
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q43203" target="_blank">
+                                    
+                                        
+                                            Clint Eastwood
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 95
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q46809" target="_blank">
+                                    
+                                        
+                                            Raúl Castro
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 94
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q13002" target="_blank">
+                                    
+                                        
+                                            Paul Gascoigne
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 58
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">2</td>
+                        <td class="team-name">La morte ti fa bella</td>
+                        <td>Eli</td>
+                        <td class="score">34</td>
+                        <td>71.54</td>
+                        
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q180374" target="_blank">
+                                    
+                                        
+                                            Frank Gehry
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 96
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q47832" target="_blank">
+                                    
+                                        
+                                            Umberto Bossi
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 84
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q22686" target="_blank">
+                                    
+                                        
+                                            Donald Trump
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 79
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q81328" target="_blank">
+                                    
+                                        
+                                            Harrison Ford
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 83
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q39792" target="_blank">
+                                    
+                                        
+                                            Jack Nicholson
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 88
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q238547" target="_blank">
+                                    
+                                        
+                                            Stefania Sandrelli
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 79
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q41142" target="_blank">
+                                    
+                                        
+                                            Jane Fonda
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 87
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q229271" target="_blank">
+                                    
+                                        
+                                            Lily Tomlin
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 86
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q239002" target="_blank">
+                                    
+                                        
+                                            <span class="dead-person">💀 Ornella Vanoni</span>
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 91, 34 pt.
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q25100" target="_blank">
+                                    
+                                        
+                                            Nanni Moretti
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 72
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q2680" target="_blank">
+                                    
+                                        
+                                            Bruce Willis
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 70
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q933508" target="_blank">
+                                    
+                                        
+                                            Carlo Conti
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 64
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q17993175" target="_blank">
+                                    
+                                        
+                                            Elisabetta Franchi
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 56
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q10479" target="_blank">
+                                    
+                                        
+                                            Catherine Middleton
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 43
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q28058585" target="_blank">
+                                    
+                                        
+                                            Chiara Valerio
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 47
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q34086" target="_blank">
+                                    
+                                        
+                                            Justin Bieber
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 31
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q56434717" target="_blank">
+                                    
+                                        
+                                            Greta Thunberg
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 22
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q131411648" target="_blank">
+                                    
+                                        
+                                            Luigi Mangione
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 27
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q206112" target="_blank">
+                                    
+                                        
+                                            Willie Nelson
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 92
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q56094" target="_blank">
+                                    
+                                        
+                                            Francis Ford Coppola
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 86
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q559577" target="_blank">
+                                    
+                                        
+                                            Fausto Bertinotti
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 85
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q119588" target="_blank">
+                                    
+                                        
+                                            Umberto Smaila
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 75
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q190148" target="_blank">
+                                    
+                                        
+                                            Renzo Piano
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 88
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q470554" target="_blank">
+                                    
+                                        
+                                            Gino Paoli
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 91
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                            
+                            
+                            
+                            
+                                <td class="person-cell">
+                                    
+                                    
+                                    
+                                        <a href="http://www.wikidata.org/entity/Q454010" target="_blank">
+                                    
+                                        
+                                            Amanda Lear
+                                        
+                                    
+                                        </a>
+                                    
+                                    
+                                    <br>
+                                    <small>
+                                        
+                                            Età: 86
+                                        
+                                    </small>
+                                </td>
+                            
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>💀 Necrologio</h2>
+            <ul class="necro-list">
                 
-        </ul>
+                    
+                        <li class="necro-item">
+                            <div class="necro-name">
+                                
+                                
+                                    <a href="http://www.wikidata.org/entity/Q239002" target="_blank">Ornella Vanoni</a>
+                                
+                            </div>
+                            <div class="necro-details">
+                                <span>1934-09-22 - 2025-11-21</span> | 
+                                <span>Età: 91</span> | 
+                                <span>Squadre: Take Death, La morte ti fa bella</span>
+                            </div>
+                        </li>
+                    
+                
+            </ul>
+        </div>
     </div>
 </body>
 </html>
