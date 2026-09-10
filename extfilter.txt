@@ -1,0 +1,11 @@
+*.zipx
+*.gz
+*.lz
+*.lnk
+*.arj
+*.lzh
+*.001
+*.scr
+*.uue
+*.uua
+*.exe
