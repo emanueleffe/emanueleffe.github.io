@@ -1,0 +1,5205 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifica Fantamorto — stagione 26/27</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --background-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .last-update {
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
+            width: 50px;
+        }
+
+        .team-name {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .score {
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .person-cell {
+            font-size: 0.9rem;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .dead-person {
+            background-color: #ffebee;
+            color: #c62828;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .necro-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .necro-item {
+            background-color: white;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .necro-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .necro-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .empty-cell {
+            color: #ccc;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .necro-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .necro-details {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Classifica Fantamorto — stagione 26/27</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Tabellone Generale</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="rank">#</th>
+                        <th>Squadra</th>
+                        <th>Proprietario</th>
+                        <th class="score">Punti</th>
+                        <th>Età Media</th>
+                        
+                        <th>CAPITANO</th>
+                        
+                        <th>OVER 75<br><small>(M ITA)</small></th>
+                        
+                        <th>OVER 75<br><small>(M STR)</small></th>
+                        
+                        <th>OVER 75<br><small>(M)</small></th>
+                        
+                        <th>OVER 85<br><small>(M)</small></th>
+                        
+                        <th>OVER 75<br><small>(F ITA)</small></th>
+                        
+                        <th>OVER 75<br><small>(F STR)</small></th>
+                        
+                        <th>OVER 75<br><small>(F)</small></th>
+                        
+                        <th>OVER 85<br><small>(F)</small></th>
+                        
+                        <th>UNDER 75<br><small>(M ITA)</small></th>
+                        
+                        <th>UNDER 75<br><small>(M STR)</small></th>
+                        
+                        <th>UNDER 75<br><small>(M)</small></th>
+                        
+                        <th>UNDER 75<br><small>(F ITA)</small></th>
+                        
+                        <th>UNDER 75<br><small>(F STR)</small></th>
+                        
+                        <th>UNDER 75<br><small>(F)</small></th>
+                        
+                        <th>UNDER 40</th>
+                        
+                        <th>UNDER 40</th>
+                        
+                        <th>UNDER 40</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                        <th>LIBERO</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="rank">1</td>
+                        <td class="team-name">99 Fosse</td>
+                        <td>Paolo</td>
+                        <td class="score">0</td>
+                        <td>74.9</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/George_R._R._Martin" target="_blank">
+                            George R. R. Martin
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Renzo_Piano" target="_blank">
+                            Renzo Piano
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Paul_McCartney" target="_blank">
+                            Paul McCartney
+                            </a>
+                            
+                            <br><small>
+                                84 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Renzo_Arbore" target="_blank">
+                            Renzo Arbore
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lino_Banfi" target="_blank">
+                            Lino Banfi
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Barbara_Bouchet" target="_blank">
+                            Barbara Bouchet
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Meryl_Streep" target="_blank">
+                            Meryl Streep
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Loredana_Bert%C3%A8" target="_blank">
+                            Loredana Bertè
+                            </a>
+                            
+                            <br><small>
+                                76 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jane_Fonda" target="_blank">
+                            Jane Fonda
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lele_Mora" target="_blank">
+                            Lele Mora
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Nikki_Sixx" target="_blank">
+                            Nikki Sixx
+                            </a>
+                            
+                            <br><small>
+                                67 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Sgarbi" target="_blank">
+                            Vittorio Sgarbi
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Rosy_Bindi" target="_blank">
+                            Rosaria &#34;Rosy&#34; Bindi
+                            </a>
+                            
+                            <br><small>
+                                75 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Naomi_Campbell" target="_blank">
+                            Naomi Campbell
+                            </a>
+                            
+                            <br><small>
+                                56 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Isabelle_Huppert" target="_blank">
+                            Isabelle Huppert
+                            </a>
+                            
+                            <br><small>
+                                73 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fedez" target="_blank">
+                            Fedez
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Baby_Gang_%28rapper%29" target="_blank">
+                            Zaccaria &#34;Baby Gang&#34; Mouhib
+                            </a>
+                            
+                            <br><small>
+                                25 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Demi_Lovato" target="_blank">
+                            Demi Lovato
+                            </a>
+                            
+                            <br><small>
+                                34 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giuliano_Amato" target="_blank">
+                            Giuliano Amato
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Pupi_Avati" target="_blank">
+                            Pupi Avati
+                            </a>
+                            
+                            <br><small>
+                                87 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mara_Maionchi" target="_blank">
+                            Mara Maionchi
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Orietta_Berti" target="_blank">
+                            Orietta Berti
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Wanna_Marchi" target="_blank">
+                            Wanna Marchi
+                            </a>
+                            
+                            <br><small>
+                                84 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Barbara_Alberti" target="_blank">
+                            Barbara Alberti
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Liliana_Segre" target="_blank">
+                            Liliana Segre
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">2</td>
+                        <td class="team-name">Benson &amp; Ended</td>
+                        <td>Chris</td>
+                        <td class="score">0</td>
+                        <td>72.6</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Paul_Biya" target="_blank">
+                            Paul Biya
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giampiero_Mughini" target="_blank">
+                            Giampiero Mughini
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Kenneth Copeland
+                            
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mario_Monti" target="_blank">
+                            Mario Monti
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Maria_Elisabetta_Alberti_Casellati" target="_blank">
+                            Maria Elisabetta Alberti Casellati
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Hillary_Clinton" target="_blank">
+                            Hillary Clinton
+                            </a>
+                            
+                            <br><small>
+                                79 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Carlo_III_del_Regno_Unito" target="_blank">
+                            Carlo III del Regno Unito
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Corrado_Augias" target="_blank">
+                            Corrado Augias
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Alessandro_Sallusti" target="_blank">
+                            Alessandro Sallusti
+                            </a>
+                            
+                            <br><small>
+                                69 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Billy_Idol" target="_blank">
+                            Billy Idol
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gerry_Scotti" target="_blank">
+                            Gerry Scotti
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Barbara_D%27Urso" target="_blank">
+                            Barbara D&#39;Urso
+                            </a>
+                            
+                            <br><small>
+                                69 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Paula White
+                            
+                            
+                            <br><small>
+                                60 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Brigitte_Macron" target="_blank">
+                            Brigitte Macron
+                            </a>
+                            
+                            <br><small>
+                                73 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Rondodasosa" target="_blank">
+                            Rondodasosa
+                            </a>
+                            
+                            <br><small>
+                                24 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andrew_Tate" target="_blank">
+                            Andrew Tate
+                            </a>
+                            
+                            <br><small>
+                                39 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Rosa_Chemical" target="_blank">
+                            Rosa Chemical
+                            </a>
+                            
+                            <br><small>
+                                28 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Toni_Iwobi" target="_blank">
+                            Tony Iwobi
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Renzo_Piano" target="_blank">
+                            Renzo Piano
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Iggy_Pop" target="_blank">
+                            Iggy Pop
+                            </a>
+                            
+                            <br><small>
+                                79 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Papa_Leone_XIV" target="_blank">
+                            Papa Leone XIV
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sergio_Mattarella" target="_blank">
+                            Sergio Mattarella
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ezio_Greggio" target="_blank">
+                            Ezio Greggio
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Benjamin_Netanyahu" target="_blank">
+                            Benjamin Netanyahu
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">3</td>
+                        <td class="team-name">Chi non muore si rivede</td>
+                        <td>Nicole</td>
+                        <td class="score">0</td>
+                        <td>71.7</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donald_Trump" target="_blank">
+                            Donald Trump
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lino_Banfi" target="_blank">
+                            Lino Banfi
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mick_Jagger" target="_blank">
+                            Mick Jagger
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Pippo_Franco" target="_blank">
+                            Pippo Franco
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jon_Voight" target="_blank">
+                            Jon Voight
+                            </a>
+                            
+                            <br><small>
+                                87 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Elsa_Fornero" target="_blank">
+                            Elsa Fornero
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jane_Fonda" target="_blank">
+                            Jane Fonda
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Judi_Dench" target="_blank">
+                            Judi Dench
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Massimo_Giletti" target="_blank">
+                            Massimo Giletti
+                            </a>
+                            
+                            <br><small>
+                                64 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bruce_Willis" target="_blank">
+                            Bruce Willis
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Toni_Servillo" target="_blank">
+                            Toni Servillo
+                            </a>
+                            
+                            <br><small>
+                                67 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Marcella_Bella" target="_blank">
+                            Marcella Bella
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michelle_Pfeiffer" target="_blank">
+                            Michelle Pfeiffer
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sara_Tommasi" target="_blank">
+                            Sara Tommasi
+                            </a>
+                            
+                            <br><small>
+                                45 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fedez" target="_blank">
+                            Fedez
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Charles Leclerc
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Baby_Gang_%28rapper%29" target="_blank">
+                            Zaccaria &#34;Baby Gang&#34; Mouhib
+                            </a>
+                            
+                            <br><small>
+                                25 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Feltri" target="_blank">
+                            Vittorio Feltri
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Alejandro_Jodorowsky" target="_blank">
+                            Alejandro Jodorowksy
+                            </a>
+                            
+                            <br><small>
+                                97 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Y%C5%8Dko_Ono" target="_blank">
+                            Yōko Ono
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorino_Andreoli" target="_blank">
+                            Vittorino Andreoli
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Brumotti" target="_blank">
+                            Vittorio Brumotti
+                            </a>
+                            
+                            <br><small>
+                                46 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andrew_Tate" target="_blank">
+                            Andrew Tate
+                            </a>
+                            
+                            <br><small>
+                                39 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Andrea Diprè
+                            
+                            
+                            <br><small>
+                                51 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">4</td>
+                        <td class="team-name">Falchino e Borsellone</td>
+                        <td>Pozzi</td>
+                        <td class="score">0</td>
+                        <td>61.8</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Roberto_Benigni" target="_blank">
+                            Roberto Benigni
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Feltri" target="_blank">
+                            Vittorio Feltri
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Tenzin Gyatso (Dalai Lama)
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Tiziano_Crudeli" target="_blank">
+                            Tiziano Crudeli
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lino_Banfi" target="_blank">
+                            Lino Banfi
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Susan_Sarandon" target="_blank">
+                            Susan Sarandon
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jane_Fonda" target="_blank">
+                            Jane Fonda
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Y%C5%8Dko_Ono" target="_blank">
+                            Yōko Ono
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giorgio_Canali" target="_blank">
+                            Giorgio Canali
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ezra_Miller" target="_blank">
+                            Ezra Miller
+                            </a>
+                            
+                            <br><small>
+                                34 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andy_Taylor" target="_blank">
+                            Andy Taylor
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Antonella_Clerici" target="_blank">
+                            Antonella Clerici
+                            </a>
+                            
+                            <br><small>
+                                62 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Carolyn_Smith" target="_blank">
+                            Carolyn Smith
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Princess_Nokia" target="_blank">
+                            Princess Nokia
+                            </a>
+                            
+                            <br><small>
+                                34 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Matteo_Politano" target="_blank">
+                            Matteo Politano
+                            </a>
+                            
+                            <br><small>
+                                33 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Marc_M%C3%A1rquez" target="_blank">
+                            Marc Marquez
+                            </a>
+                            
+                            <br><small>
+                                33 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Joe_Tracini" target="_blank">
+                            Joe Tracini
+                            </a>
+                            
+                            <br><small>
+                                38 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Hakan_%C3%87alhano%C4%9Flu" target="_blank">
+                            Hakan Calhanoglu
+                            </a>
+                            
+                            <br><small>
+                                32 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Barbara_Babcock" target="_blank">
+                            Barbara Babcock
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fabrizio_Corona" target="_blank">
+                            Fabrizio Corona
+                            </a>
+                            
+                            <br><small>
+                                52 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ghostemane" target="_blank">
+                            Ghostemane
+                            </a>
+                            
+                            <br><small>
+                                35 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Yoshihiro_Togashi" target="_blank">
+                            Yoshihiro Togashi
+                            </a>
+                            
+                            <br><small>
+                                60 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Steven_Tyler" target="_blank">
+                            Steven Tyler
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bronny_James" target="_blank">
+                            Bronny James
+                            </a>
+                            
+                            <br><small>
+                                22 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">5</td>
+                        <td class="team-name">He was Robert Zimmerman</td>
+                        <td>Pans</td>
+                        <td class="score">0</td>
+                        <td>67.7</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Keith_Richards" target="_blank">
+                            Keith Richards
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Feltri" target="_blank">
+                            Vittorio Feltri
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Benjamin_Netanyahu" target="_blank">
+                            Benjamin Netanyahu
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ric_Flair" target="_blank">
+                            Ric Flair
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Clint_Eastwood" target="_blank">
+                            Clint Eastwood
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Patty_Pravo" target="_blank">
+                            Patty Pravo
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Grace_Jones" target="_blank">
+                            Grace Jones
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Y%C5%8Dko_Ono" target="_blank">
+                            Yōko Ono
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fausto_Biloslavo" target="_blank">
+                            Fausto Biloslavo
+                            </a>
+                            
+                            <br><small>
+                                64 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bam_Margera" target="_blank">
+                            Bam Margera
+                            </a>
+                            
+                            <br><small>
+                                47 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Paul_Gascoigne" target="_blank">
+                            Paul Gascoigne
+                            </a>
+                            
+                            <br><small>
+                                59 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Federica_Angeli" target="_blank">
+                            Federica Angeli
+                            </a>
+                            
+                            <br><small>
+                                51 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Adela Navarro Bello
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Clarissa Ward
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/YoungBoy_Never_Broke_Again" target="_blank">
+                            NBA YoungBoy
+                            </a>
+                            
+                            <br><small>
+                                27 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andrzej_Bargiel" target="_blank">
+                            Andrzej Bargiel
+                            </a>
+                            
+                            <br><small>
+                                38 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Cecilia_Sala" target="_blank">
+                            Cecilia Sala
+                            </a>
+                            
+                            <br><small>
+                                31 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Silvio_Garattini" target="_blank">
+                            Silvio Garattini
+                            </a>
+                            
+                            <br><small>
+                                97 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bernie_Ecclestone" target="_blank">
+                            Bernie Ecclestone
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Don_McCullin" target="_blank">
+                            Don McCullin
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Elena_Mila%C5%A1ina" target="_blank">
+                            Elena Milashina
+                            </a>
+                            
+                            <br><small>
+                                48 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Viktor_But" target="_blank">
+                            Viktor Bout
+                            </a>
+                            
+                            <br><small>
+                                59 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Denis_Urubko" target="_blank">
+                            Denis Urubko
+                            </a>
+                            
+                            <br><small>
+                                53 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Alex_Honnold" target="_blank">
+                            Alex Honnold
+                            </a>
+                            
+                            <br><small>
+                                41 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">6</td>
+                        <td class="team-name">Let&#39;s do the Time Warp agaaaaaaaain</td>
+                        <td>Asja</td>
+                        <td class="score">0</td>
+                        <td>70.8</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Susan_Sarandon" target="_blank">
+                            Susan Sarandon
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Cochi_Ponzoni" target="_blank">
+                            Cochi Ponzoni
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_Douglas" target="_blank">
+                            Michael Douglas
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Renato_Pozzetto" target="_blank">
+                            Renato Pozzetto
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Clint_Eastwood" target="_blank">
+                            Clint Eastwood
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Caterina_Caselli" target="_blank">
+                            Caterina Caselli
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Grace_Zabriskie" target="_blank">
+                            Grace Zabriskie
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kathy_Bates" target="_blank">
+                            Kathy Bates
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kim_Novak" target="_blank">
+                            Kim Novak
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gigi_D%27Agostino" target="_blank">
+                            Gigi D&#39;Agostino
+                            </a>
+                            
+                            <br><small>
+                                58 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jeremy_Renner" target="_blank">
+                            Jeremy Renner
+                            </a>
+                            
+                            <br><small>
+                                55 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_J._Fox" target="_blank">
+                            Michael J. Fox
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Pamela_Prati" target="_blank">
+                            Pamela Prati
+                            </a>
+                            
+                            <br><small>
+                                67 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Am%C3%A9lie_Nothomb" target="_blank">
+                            Amelie Nothomb
+                            </a>
+                            
+                            <br><small>
+                                59 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gianna_Nannini" target="_blank">
+                            Gianna Nannini
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vanessa_Hudgens" target="_blank">
+                            Vanessa Hudgens
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Demi_Lovato" target="_blank">
+                            Demi Lovato
+                            </a>
+                            
+                            <br><small>
+                                34 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Finneas O&#39; Connell
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lil_Wayne" target="_blank">
+                            Lil Wayne
+                            </a>
+                            
+                            <br><small>
+                                44 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gianni_Rivera" target="_blank">
+                            Gianni Rivera
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Renzo_Arbore" target="_blank">
+                            Renzo Arbore
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Milena_Vukotic_%28attrice%29" target="_blank">
+                            Milena Vukotic
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gabriele_Paolini" target="_blank">
+                            Gabriele Paolini
+                            </a>
+                            
+                            <br><small>
+                                52 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vera_Wang" target="_blank">
+                            Vera Wang
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Selvaggia_Lucarelli" target="_blank">
+                            Selvaggia Lucarelli
+                            </a>
+                            
+                            <br><small>
+                                52 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">7</td>
+                        <td class="team-name">NomeSquadra</td>
+                        <td>Ava</td>
+                        <td class="score">0</td>
+                        <td>70.4</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Morgan_Freeman" target="_blank">
+                            Morgan Freeman
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Al_Bano" target="_blank">
+                            Al Bano
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Joe_Pesci" target="_blank">
+                            Joe Pesci
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donald_Trump" target="_blank">
+                            Donald Trump
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Frankie_Valli" target="_blank">
+                            Frankie Valli
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mina_%28cantante%29" target="_blank">
+                            Mina
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Cher" target="_blank">
+                            Cher
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Joni_Mitchell" target="_blank">
+                            Joni Mitchell
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Liliana_Segre" target="_blank">
+                            Liliana Segre
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fabrizio_Corona" target="_blank">
+                            Fabrizio Corona
+                            </a>
+                            
+                            <br><small>
+                                52 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Elon_Musk" target="_blank">
+                            Elon Musk
+                            </a>
+                            
+                            <br><small>
+                                55 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_J._Fox" target="_blank">
+                            Michael J. Fox
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fiorella_Mannoia" target="_blank">
+                            Fiorella Mannoia
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Madonna_%28cantante%29" target="_blank">
+                            Madonna
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Daniela_Santanch%C3%A8" target="_blank">
+                            Daniela Santanchè
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lizzo" target="_blank">
+                            Lizzo
+                            </a>
+                            
+                            <br><small>
+                                38 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Daniel_Radcliffe" target="_blank">
+                            Daniel Radcliffe
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andrea_Presti" target="_blank">
+                            Andrea Presti
+                            </a>
+                            
+                            <br><small>
+                                39 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Judi_Dench" target="_blank">
+                            Judi Dench
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_Douglas" target="_blank">
+                            Michael Douglas
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bruno_Vespa" target="_blank">
+                            Bruno Vespa
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/C%C3%A9line_Dion" target="_blank">
+                            Céline Dion
+                            </a>
+                            
+                            <br><small>
+                                58 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/George_Lucas" target="_blank">
+                            George Lucas
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_Moore" target="_blank">
+                            Michael Moore
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lewis_Capaldi" target="_blank">
+                            Lewis Capaldi
+                            </a>
+                            
+                            <br><small>
+                                30 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">8</td>
+                        <td class="team-name">Non ci ho pensato</td>
+                        <td>Umbe</td>
+                        <td class="score">0</td>
+                        <td>69.3</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Adriano_Celentano" target="_blank">
+                            Adriano Celentano
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bruno_Vespa" target="_blank">
+                            Bruno Vespa
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Benjamin_Netanyahu" target="_blank">
+                            Benjamin Netanyahu
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Phil Collins
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lino_Banfi" target="_blank">
+                            Lino Banfi
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Patty_Pravo" target="_blank">
+                            Patty Pravo
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Judi_Dench" target="_blank">
+                            Judi Dench
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Aung_San_Suu_Kyi" target="_blank">
+                            Aung San Suu Kyi
+                            </a>
+                            
+                            <br><small>
+                                81 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Iva_Zanicchi" target="_blank">
+                            Iva Zanicchi
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Roberto_Benigni" target="_blank">
+                            Roberto Benigni
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vladimir_Putin" target="_blank">
+                            Vladimir Putin
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Roberto_Calderoli" target="_blank">
+                            Roberto Calderoli
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donatella_Versace" target="_blank">
+                            Donatella Versace
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Madonna_%28cantante%29" target="_blank">
+                            Madonna
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Whoopi_Goldberg" target="_blank">
+                            Whoopi Goldberg
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fedez" target="_blank">
+                            Fedez
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kylian_Mbapp%C3%A9" target="_blank">
+                            Kylian Mbappé
+                            </a>
+                            
+                            <br><small>
+                                27 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Simba_La_Rue" target="_blank">
+                            Simba La Rue
+                            </a>
+                            
+                            <br><small>
+                                24 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Beppe_Grillo" target="_blank">
+                            Beppe Grillo
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Carlo_III_del_Regno_Unito" target="_blank">
+                            Carlo III del Regno Unito
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jack_Nicholson" target="_blank">
+                            Jack Nicholson
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jordan_Peterson" target="_blank">
+                            Jordan Peterson
+                            </a>
+                            
+                            <br><small>
+                                64 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giuliano_Ferrara" target="_blank">
+                            Giuliano Ferrara
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kim_Jong-un" target="_blank">
+                            Kim Jong-un
+                            </a>
+                            
+                            <br><small>
+                                42 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Andrea Diprè
+                            
+                            
+                            <br><small>
+                                51 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">9</td>
+                        <td class="team-name">Oh morte nera oh morte nera oh morte ne</td>
+                        <td>Anghi</td>
+                        <td class="score">0</td>
+                        <td>75.8</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mogol" target="_blank">
+                            Giulio Rapetti
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Iginio_Massari" target="_blank">
+                            Iginio Massari
+                            </a>
+                            
+                            <br><small>
+                                84 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Robert Budi Hartono
+                            
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Luciano_Moggi" target="_blank">
+                            Luciano Moggi
+                            </a>
+                            
+                            <br><small>
+                                89 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Corrado_Augias" target="_blank">
+                            Corrado Augias
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Anna_Moroni" target="_blank">
+                            Anna Moroni
+                            </a>
+                            
+                            <br><small>
+                                87 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Patti_Smith" target="_blank">
+                            Patti Smith
+                            </a>
+                            
+                            <br><small>
+                                79 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mara_Maionchi" target="_blank">
+                            Mara Maionchi
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Y%C5%8Dko_Ono" target="_blank">
+                            Yōko Ono
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giovanni_Lindo_Ferretti" target="_blank">
+                            Giovanni Lindo Ferretti
+                            </a>
+                            
+                            <br><small>
+                                73 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jair_Bolsonaro" target="_blank">
+                            Jair Bolsonaro
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Roberto_Benigni" target="_blank">
+                            Roberto Benigni
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Nada_%28cantante%29" target="_blank">
+                            Nada Malanima
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Courtney_Love" target="_blank">
+                            Courtney Love
+                            </a>
+                            
+                            <br><small>
+                                62 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donatella_Rettore" target="_blank">
+                            Donatella Rettore
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Demi_Lovato" target="_blank">
+                            Demi Lovato
+                            </a>
+                            
+                            <br><small>
+                                34 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/ASAP_Rocky" target="_blank">
+                            ASAP Rocky
+                            </a>
+                            
+                            <br><small>
+                                38 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Jorge Martìn
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Norman Foster (architetto)
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Liliana_Segre" target="_blank">
+                            Liliana Segre
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gerry_Scotti" target="_blank">
+                            Gerry Scotti
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Adriano_Celentano" target="_blank">
+                            Adriano Celentano
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Dan_Peterson" target="_blank">
+                            Dan Peterson
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ramzan_Kadyrov" target="_blank">
+                            Ramzan Kadyrov
+                            </a>
+                            
+                            <br><small>
+                                50 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Papa_Leone_XIV" target="_blank">
+                            Papa Leone XIV
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">10</td>
+                        <td class="team-name">Take Death</td>
+                        <td>Ema</td>
+                        <td class="score">0</td>
+                        <td>74.4</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donald_Trump" target="_blank">
+                            Donald Trump
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Lino_Banfi" target="_blank">
+                            Lino Banfi
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/George_Soros" target="_blank">
+                            George Soros
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Joe_Biden" target="_blank">
+                            Joe Biden
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Akihito" target="_blank">
+                            Akihito
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Liliana_Segre" target="_blank">
+                            Liliana Segre
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Y%C5%8Dko_Ono" target="_blank">
+                            Yōko Ono
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kim_Novak" target="_blank">
+                            Kim Novak
+                            </a>
+                            
+                            <br><small>
+                                93 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ezio_Greggio" target="_blank">
+                            Ezio Greggio
+                            </a>
+                            
+                            <br><small>
+                                72 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bashar_al-Assad" target="_blank">
+                            Bashar al-Assad
+                            </a>
+                            
+                            <br><small>
+                                61 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bruce_Willis" target="_blank">
+                            Bruce Willis
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Serena_Grandi" target="_blank">
+                            Serena Grandi
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/C%C3%A9line_Dion" target="_blank">
+                            Céline Dion
+                            </a>
+                            
+                            <br><small>
+                                58 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/%C4%96l%27vira_Nabiullina" target="_blank">
+                            Ėl&#39;vira Nabiullina
+                            </a>
+                            
+                            <br><small>
+                                63 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/6ix9ine" target="_blank">
+                            6ix9ine
+                            </a>
+                            
+                            <br><small>
+                                30 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Fedez" target="_blank">
+                            Fedez
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kim_Ju-ae" target="_blank">
+                            Kim Ju-ae
+                            </a>
+                            
+                            <br><small>
+                                13 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vladimir_Putin" target="_blank">
+                            Vladimir Putin
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Carlo_III_del_Regno_Unito" target="_blank">
+                            Carlo III del Regno Unito
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Michael_J._Fox" target="_blank">
+                            Michael J. Fox
+                            </a>
+                            
+                            <br><small>
+                                65 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Sgarbi" target="_blank">
+                            Vittorio Sgarbi
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Clint_Eastwood" target="_blank">
+                            Clint Eastwood
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ra%C3%BAl_Castro" target="_blank">
+                            Raúl Castro
+                            </a>
+                            
+                            <br><small>
+                                95 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mogol" target="_blank">
+                            Giulio Rapetti
+                            </a>
+                            
+                            <br><small>
+                                90 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">11</td>
+                        <td class="team-name">The Catacombs</td>
+                        <td>Berna</td>
+                        <td class="score">0</td>
+                        <td>69.8</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Joe_Pesci" target="_blank">
+                            Joe Pesci
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Massimo_Boldi" target="_blank">
+                            Massimo Boldi
+                            </a>
+                            
+                            <br><small>
+                                81 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/%C3%93scar_Tab%C3%A1rez" target="_blank">
+                            Óscar Washington Tabárez Silva
+                            </a>
+                            
+                            <br><small>
+                                79 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sergej_Viktorovi%C4%8D_Lavrov" target="_blank">
+                            Sergej Lavrov
+                            </a>
+                            
+                            <br><small>
+                                76 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Enrico_Albertosi" target="_blank">
+                            Enrico Albertosi
+                            </a>
+                            
+                            <br><small>
+                                87 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Patty_Pravo" target="_blank">
+                            Patty Pravo
+                            </a>
+                            
+                            <br><small>
+                                78 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Cher" target="_blank">
+                            Cher
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Liza_Minnelli" target="_blank">
+                            Liza Minnelli
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Sophia_Loren" target="_blank">
+                            Sophia Loren
+                            </a>
+                            
+                            <br><small>
+                                92 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Paolo_Nespoli" target="_blank">
+                            Paolo Nespoli
+                            </a>
+                            
+                            <br><small>
+                                69 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Alex_van_Halen" target="_blank">
+                            Alex Van Halen
+                            </a>
+                            
+                            <br><small>
+                                73 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Paul_Kagame" target="_blank">
+                            Paul Kagame
+                            </a>
+                            
+                            <br><small>
+                                69 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Marcella_Bella" target="_blank">
+                            Marcella Bella
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Madonna_%28cantante%29" target="_blank">
+                            Madonna
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Cyndi_Lauper" target="_blank">
+                            Cyndi Lauper
+                            </a>
+                            
+                            <br><small>
+                                73 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Alexandria_Ocasio-Cortez" target="_blank">
+                            Alexandria Ocasio-Cortez
+                            </a>
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Gianluca_Gazzoli" target="_blank">
+                            Gianluca Gazzoli
+                            </a>
+                            
+                            <br><small>
+                                38 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ariana_Grande" target="_blank">
+                            Ariana Grande
+                            </a>
+                            
+                            <br><small>
+                                33 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Corrado_Augias" target="_blank">
+                            Corrado Augias
+                            </a>
+                            
+                            <br><small>
+                                91 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Clint_Eastwood" target="_blank">
+                            Clint Eastwood
+                            </a>
+                            
+                            <br><small>
+                                96 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            James Talarico
+                            
+                            
+                            <br><small>
+                                37 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Nayib_Bukele" target="_blank">
+                            Nayib Bukele
+                            </a>
+                            
+                            <br><small>
+                                45 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Hu_Jintao" target="_blank">
+                            Hu Jintao
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Khalifa_Belqasim_Haftar" target="_blank">
+                            Khalifa Haftar
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Kim_Jong-un" target="_blank">
+                            Kim Jong-un
+                            </a>
+                            
+                            <br><small>
+                                42 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="rank">12</td>
+                        <td class="team-name">Turboschioppati (speriamo)</td>
+                        <td>Noe</td>
+                        <td class="score">0</td>
+                        <td>71.3</td>
+
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Elon_Musk" target="_blank">
+                            Elon Musk
+                            </a>
+                            
+                            <br><small>
+                                55 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Bruno_Vespa" target="_blank">
+                            Bruno Vespa
+                            </a>
+                            
+                            <br><small>
+                                82 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Neil Young
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Vittorio_Feltri" target="_blank">
+                            Vittorio Feltri
+                            </a>
+                            
+                            <br><small>
+                                83 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Aldo Savoldello &#34;Il Mago Silvan&#34;
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Mara_Maionchi" target="_blank">
+                            Mara Maionchi
+                            </a>
+                            
+                            <br><small>
+                                85 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Meryl_Streep" target="_blank">
+                            Meryl Streep
+                            </a>
+                            
+                            <br><small>
+                                77 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Wanna_Marchi" target="_blank">
+                            Wanna Marchi
+                            </a>
+                            
+                            <br><small>
+                                84 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Jane_Fonda" target="_blank">
+                            Jane Fonda
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Giuseppe_Cruciani" target="_blank">
+                            Giuseppe Cruciani
+                            </a>
+                            
+                            <br><small>
+                                60 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Rowan_Atkinson" target="_blank">
+                            Rowan Atkinson
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Diego Fusaro
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ornella_Muti" target="_blank">
+                            Ornella Muti
+                            </a>
+                            
+                            <br><small>
+                                71 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Whoopi_Goldberg" target="_blank">
+                            Whoopi Goldberg
+                            </a>
+                            
+                            <br><small>
+                                70 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Ellen_DeGeneres" target="_blank">
+                            Ellen DeGeneres
+                            </a>
+                            
+                            <br><small>
+                                68 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Eugenia Cooney
+                            
+                            
+                            <br><small>
+                                32 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Jimmy Donaldson &#34;MrBeast&#34;
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Andrew_Tate" target="_blank">
+                            Andrew Tate
+                            </a>
+                            
+                            <br><small>
+                                39 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Roberto_Benigni" target="_blank">
+                            Roberto Benigni
+                            </a>
+                            
+                            <br><small>
+                                74 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Massimo_Boldi" target="_blank">
+                            Massimo Boldi
+                            </a>
+                            
+                            <br><small>
+                                81 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Donald_Trump" target="_blank">
+                            Donald Trump
+                            </a>
+                            
+                            <br><small>
+                                80 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Adriano_Celentano" target="_blank">
+                            Adriano Celentano
+                            </a>
+                            
+                            <br><small>
+                                88 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            
+                            Roberto Da Crema &#34;Il Baffo&#34;
+                            
+                            
+                            <br><small>
+                                None anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Povia" target="_blank">
+                            Giuseppe Povia
+                            </a>
+                            
+                            <br><small>
+                                53 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                        
+
+                        
+                        <td class="person-cell">
+                            
+                            <a href="https://it.wikipedia.org/wiki/Iva_Zanicchi" target="_blank">
+                            Iva Zanicchi
+                            </a>
+                            
+                            <br><small>
+                                86 anni
+                            </small>
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Necrologi</h2>
+            <ul class="necro-list">
+                
+                <li class="necro-item">Nessun decesso registrato (per il momento)</li>
+                
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
